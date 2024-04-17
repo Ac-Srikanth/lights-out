@@ -1,10 +1,19 @@
-// the 4 states represent ['yellow', 'green', 'red', 'red']
-const signalStateOff = ["off", "off", "off", "off"];
-const redOn = ["off", "off", "on", "on"];
-const redFlashes = ["off", "off", "flash", "flash"];
-const greenOn = ["off", "on", "off", "off"];
+import { LightState } from "@/components/Light";
 
-export const startProcedureData = {
+// the 4 states represent ['yellow', 'green', 'red', 'red']
+const signalStateOff: LightState[] = ["off", "off", "off", "off"];
+const redOn: LightState[] = ["off", "off", "on", "on"];
+const redFlashes: LightState[] = ["off", "off", "flash", "flash"];
+const greenOn: LightState[] = ["off", "on", "off", "off"];
+
+export type TData = {
+  title: string;
+  description: string;
+  signalState: LightState[][];
+  horn: boolean;
+};
+
+export const startProcedureData: Record<number, TData> = {
   [-30 * 60]: {
     title: "30 mins to the start of the formation lap",
     description:

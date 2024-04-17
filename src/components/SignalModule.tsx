@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import SignalContainer from "./SignalContainer";
 import { raceStart, startProcedureData, timeIntervalsArray } from "../lib/signalData";
+/*@ts-ignore */
 import useSound from 'use-sound'
 import horn from '../../public/horn.mp3'
 import race from '../../public/race.mp3'
@@ -28,7 +29,7 @@ export default function SignalModule() {
 
 
   const handleNext = () => {
-    const index = timeIntervalsArray.findIndex((element) => parseInt(element) === presentTimeInterval)
+    const index = timeIntervalsArray.findIndex((element) => element === presentTimeInterval)
     if (index !== -1) {
       if (!(index + 1 === timeIntervalsArray.length)) {
         setTime(timeIntervalsArray[index + 1])
@@ -37,7 +38,7 @@ export default function SignalModule() {
   }
 
   const handlePrevious = () => {
-    const index = timeIntervalsArray.findIndex((element) => parseInt(element) === presentTimeInterval)
+    const index = timeIntervalsArray.findIndex((element) => element === presentTimeInterval)
     if (index !== -1) {
       if (index - 1 !== -1) {
         setTime(timeIntervalsArray[index - 1])
@@ -61,7 +62,7 @@ export default function SignalModule() {
   }
 
   useEffect(() => {
-    let timer;
+    let timer: any;
     if (mode === 'start') {
       timer = setInterval(() => {
         setTime(prevSeconds => {
